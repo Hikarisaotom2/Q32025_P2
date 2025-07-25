@@ -4,6 +4,8 @@
  */
 package clase_22072025;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author claudiacortes
@@ -46,6 +48,20 @@ public class Clase_22072025 {
          4) sumar los valores en una lista y retornar el valor total. 
         */
         
+        /*
+        lista = [5.....8]
+        numero = 5
+        
+        retonar : booleano  -> contains 
+        retornar: int -> indexof 
+        for int i- 0; i<lista.length; i++ {
+            if(lista[i] == numero){
+                    return i;
+             
+        }
+        return false;
+        */
+        
 //        String p = "Anita lava la tina"
 
         /*
@@ -77,10 +93,55 @@ public class Clase_22072025 {
         }else{
             System.out.println("No es palindroma");
         }
-        
+        ArrayList<Integer> lista = new ArrayList<Integer>();
+        lista.add(3);
+        lista.add(4);
+        lista.add(5);
+        int numero = 50;
+//        int res= indexOf(0,numero,lista);
+//        System.out.println(res);
+//        
+        System.out.println(indexOf(0,numero,lista));
+        System.out.println(busquedaBinaria(0, lista.size()-1, numero, lista));
+       
+    }
+   
+    
+    public static int busquedaBinaria(int inicio,int fin,  int numero, ArrayList<Integer> lista){
+        int medio = (inicio+fin)/2;
 
+        if(inicio>fin){
+            return -1;
+        }
+
+         if(lista.get(medio) == numero){
+            return medio;
+        }else if(numero>lista.get(medio)){  // Derecho 
+            return busquedaBinaria(medio+1,fin,numero, lista);
+        }else{ // izquierdo  numero < lista.get(medio)
+            return busquedaBinaria(inicio,medio-1,numero, lista);
+        }
     }
     
+    public static int indexOf(int i, int numero, ArrayList<Integer> lista){
+        int size = lista.size()-1;
+        if(i>size){
+            return -1;
+        }
+        
+      /* if(lista.get(i)!=numero){ // caso recursivo 
+            return indexOf(i+1, numero, lista);
+        }else{ //caso base 
+            return i;
+        }*/
+      
+        if(lista.get(i)==numero){ //caso base 
+            return i;
+        }else{ //caso recursivo 
+            return indexOf(i+1, numero, lista);
+        }
+        
+    }
     public static boolean palindroma(String palabra, int i){
         int size = palabra.length()-1;
         if(i>size){
