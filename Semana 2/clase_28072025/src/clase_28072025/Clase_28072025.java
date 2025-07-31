@@ -14,6 +14,13 @@ public class Clase_28072025 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        /*
+        Clases compuestas: son una clase que tiene como minimo 1 atributo que es un objeto.
+        */
+        
+        
+        
         /*
         Programación Orientada Objetos -> POO
         
@@ -51,6 +58,10 @@ public class Clase_28072025 {
         TIPO_DE_DATO nombre;
         
         */
+        
+     
+    
+        
         
     }
     
