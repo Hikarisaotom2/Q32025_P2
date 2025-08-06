@@ -1,6 +1,8 @@
 
 package clase_04082025;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author claudiacortes
@@ -111,8 +113,19 @@ public class Clase_04082025 {
         -> El padre NO SABE quienes son sus hijos. 
         -> Los que saben quien es el padre, son los hijos ( la herencia se va a configurar en el hijo)
         -> Herencia va en una en una sola via ( que el hijo toma del padre, el padre jamas toma del hijo)
+        -> Una variable del tipo padre puede contener un objeto del tipo del padre y de sus hijos
+        ->CRUD PACIENTES 
         
         */
+        
+        
+        Paciente p = new Paciente(16, "0+", 20, 20, "","","","Juan","",123,"");
+        Paciente m = new Mujer("julio",false,16, "0+", 20, 20, "","","","Juan","",123,"");
+        Paciente h = new Hombre("",16, "0+", 20, 20, "","","","Juan","",123,"");
+        
+        ArrayList<Paciente> hola = new ArrayList<Paciente>();
+        
+
     }
     
 }
