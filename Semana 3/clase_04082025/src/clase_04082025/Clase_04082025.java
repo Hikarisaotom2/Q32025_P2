@@ -2,6 +2,7 @@
 package clase_04082025;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -19,7 +20,6 @@ public class Clase_04082025 {
         Una clase, adquiere caracteristicas de otra cuando se estblece un relación de herencia.
         
         Parent/ Padre: una clase que contiene la información que queremos compartir. 
-        
         Child/Hijo: es la clase que recibe los beneficios.
         
         -> Padre es la representación mas general de un tipo de dato. 
@@ -27,6 +27,8 @@ public class Clase_04082025 {
         
                    Humano (Padre)
         Hombre (Hijos)   Mujer (Hijo)
+        
+           
         
         
         edad 
@@ -114,18 +116,101 @@ public class Clase_04082025 {
         -> Los que saben quien es el padre, son los hijos ( la herencia se va a configurar en el hijo)
         -> Herencia va en una en una sola via ( que el hijo toma del padre, el padre jamas toma del hijo)
         -> Una variable del tipo padre puede contener un objeto del tipo del padre y de sus hijos
+        -> Los obejtos del tipo hijo puede considerarse del tipo del padre y su propio tipo
         ->CRUD PACIENTES 
+        
+        */ 
+// .        Persona 
+//         Paciente 
+//        Hombre . Mujer  Los hijos se consieran del mismo tipo de dato del padre. 
+
+                
+        Paciente p = new Paciente(16, "0+", 20, 20, "","","","Juan","",123,""); //objeto del tipo paciente 
+        
+        
+        
+        Mujer m = new Mujer("julio",false,16, "0+", 20, 20, "","","","Genesis","",123,""); //objeto del tipo mujer / objeto del tipo persona 
+        Paciente mujerPaciente = new Mujer("julio",false,16, "0+", 20, 20, "","","","Claudia","",123,""); //objeto del tipo mujer / objeto del tipo persona 
+        
+        
+        
+        
+        Hombre h = new Hombre("",16, "0+", 20, 20, "","","","Marlon","",123,""); // objeto del tipo hombre / objeto del tipo persona 
+       
+        
+        ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+        pacientes.add(p);
+        pacientes.add(h);
+        pacientes.add(m);
+        pacientes.add(mujerPaciente);
+        
+        listarPacientes(pacientes);
+        
+        /*
+        
+        CRUD 
         
         */
         
+        while (true) {
+            int pos = seleccionarPaciente(pacientes);
+            modificarPaciente(pacientes.get(pos));
+            
+//             modificarPaciente(pacientes.get(seleccionarPaciente(pacientes)));
+        }
         
-        Paciente p = new Paciente(16, "0+", 20, 20, "","","","Juan","",123,"");
-        Paciente m = new Mujer("julio",false,16, "0+", 20, 20, "","","","Juan","",123,"");
-        Paciente h = new Hombre("",16, "0+", 20, 20, "","","","Juan","",123,"");
-        
-        ArrayList<Paciente> hola = new ArrayList<Paciente>();
         
 
+    }
+
+    public static int seleccionarPaciente(ArrayList<Paciente> pacientes) {
+        int pos = -1;
+        while (pos < 0 || pos >= pacientes.size()) {
+            System.out.println("Ingrese el paciente que desea modificar");
+            listarPacientes(pacientes);
+            Scanner entrada = new Scanner(System.in);
+            pos = entrada.nextInt();
+        }
+
+        return pos;
+    }
+    
+    
+    public static void modificarPaciente(Paciente paciente){
+        //Nota: cada objeto sabe con que tipo de dato se instancio
+        
+        // Casteo / Casting : Conversión explicita de datos 
+        // Concatenacion -> "Hola mundo"+ 5 = Hola Mundo 5 
+        // Parseo  -> "Hola, mundo" -> ["Hola", "Mundo"], toma información la formatea y la analiza 
+        
+        
+        if(paciente instanceof Hombre ){
+            
+            // modificar al hombre;
+            System.out.println("Es un hombre");
+            // (Tipo de Dato al que van a convertir) Variable 
+//            ((Hombre)paciente).setFechaUltRevisionUrologo("");
+            Hombre hombre = (Hombre) paciente;
+            hombre.setFechaUltRevisionUrologo("");
+           
+        }else if(paciente instanceof Mujer){
+            //modificar a la mujer 
+            System.out.println("Es una mujer!");
+            ((Mujer) paciente).setEmbarazo(false);
+        }else{
+            // modiifcar un objeto paciente
+            System.out.println("Es un paciente");
+        }
+       
+       
+       
+        
+    }
+    
+    public  static void listarPacientes(ArrayList<Paciente> pacientes){
+        for (int i = 0; i < pacientes.size(); i++) {
+            System.out.println(i+" "+pacientes.get(i));
+        }
     }
     
 }

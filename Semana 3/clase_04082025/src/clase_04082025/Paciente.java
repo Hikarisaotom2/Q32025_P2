@@ -126,12 +126,14 @@ public class Paciente {
     public void setComidaFav(String comidaFav) {
         this.comidaFav = comidaFav;
     }
-    
-    
-    
-    
-    public void holaMundo(){
-        
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "edad=" + edad + ", tipoSangre=" + tipoSangre + ", peso=" + peso + ", altura=" + altura + ", infoPadres=" + infoPadres + ", enfermedades=" + enfermedades + ", alergias=" + alergias + ", prodMedicos=" + prodMedicos + ", nombre=" + nombre + ", id=" + id + ", comidaFav=" + comidaFav + '}';
     }
+    
+    
+    
+
     
 }

@@ -38,6 +38,11 @@ public class Mujer extends Paciente{
     public void setEmbarazo(boolean embarazo) {
         this.embarazo = embarazo;
     }
+
+    @Override
+    public String toString() {
+       return "Mujer: "+ super.nombre +" - "+super.tipoSangre+" "+super.edad;
+    }
     
     
 
