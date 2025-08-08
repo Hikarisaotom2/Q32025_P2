@@ -126,15 +126,9 @@ public class Clase_04082025 {
 
                 
         Paciente p = new Paciente(16, "0+", 20, 20, "","","","Juan","",123,""); //objeto del tipo paciente 
-        
-        
-        
-        Mujer m = new Mujer("julio",false,16, "0+", 20, 20, "","","","Genesis","",123,""); //objeto del tipo mujer / objeto del tipo persona 
         Paciente mujerPaciente = new Mujer("julio",false,16, "0+", 20, 20, "","","","Claudia","",123,""); //objeto del tipo mujer / objeto del tipo persona 
         
-        
-        
-        
+        Mujer m = new Mujer("julio",false,16, "0+", 20, 20, "","","","Genesis","",123,""); //objeto del tipo mujer / objeto del tipo persona 
         Hombre h = new Hombre("",16, "0+", 20, 20, "","","","Marlon","",123,""); // objeto del tipo hombre / objeto del tipo persona 
        
         
@@ -146,6 +140,16 @@ public class Clase_04082025 {
         
         listarPacientes(pacientes);
         
+       
+       // Object 
+       
+//       ArrayList<Object> elementos =  new ArrayList<Object>();
+//       elementos.add(h);
+//       elementos.add(p);
+//       elementos.add("");
+//       elementos.add(17);
+//       elementos.add(true);
+       
         /*
         
         CRUD 
@@ -183,16 +187,25 @@ public class Clase_04082025 {
         // Concatenacion -> "Hola mundo"+ 5 = Hola Mundo 5 
         // Parseo  -> "Hola, mundo" -> ["Hola", "Mundo"], toma información la formatea y la analiza 
         
-        
+       // Paciente = new Hombre()
         if(paciente instanceof Hombre ){
-            
+            // aqui nosostros sabemos que lo que hay en la variable paciente es un objeto del tipo hombre....
             // modificar al hombre;
             System.out.println("Es un hombre");
             // (Tipo de Dato al que van a convertir) Variable 
-//            ((Hombre)paciente).setFechaUltRevisionUrologo("");
-            Hombre hombre = (Hombre) paciente;
-            hombre.setFechaUltRevisionUrologo("");
+            // Paciente al tipo Hombre
+            Hombre personaEditar =(Hombre)paciente;
+
+           int op = 1;
+           /*
            
+           crear sub menu para editar atributos del hombre....*/
+           if(op ==1){ // editar la edad 
+                personaEditar.setEdad(0);
+           }else{ // tipo de sangre
+                personaEditar.setTipoSangre("AB+");
+           }
+
         }else if(paciente instanceof Mujer){
             //modificar a la mujer 
             System.out.println("Es una mujer!");
