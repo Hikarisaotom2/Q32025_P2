@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package clase_12082025;
+package clase_13082025;
 
 /**
  *
@@ -42,17 +42,10 @@ public class DocenteHora extends Docente{
         this.valorPorClase = valorPorClase;
     }
     
-    @Override
-    public void generarBoletaPago(){
-        System.out.println("Cantidad de clase "+cantidadClases +" Valor por clase: "+valorPorClase );
-    }
-    
-
-    @Override
-    public String toString() {
-        return "DocenteHora{" + "cantidadClases=" + cantidadClases + ", valorPorClase=" + valorPorClase + '}';
-    }
-    
+        @Override 
+     public  void generarBoletaPago(){
+     
+     }
     
     
 }

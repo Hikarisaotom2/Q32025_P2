@@ -65,9 +65,12 @@ public class Clase_12082025 {
         
         Docente d = new DocenteHora(2, 8000, "claudia", "ing sistemas", "clau_cortes@unitec.edu");
         Docente planta = new DocentePlanta(30000, "claudia", "ing sistemas", "clau_cortes@unitec.edu");
+        
         d.generarBoletaPago();
         planta.generarBoletaPago();
-        
+
     }
+
+    
     
 }
