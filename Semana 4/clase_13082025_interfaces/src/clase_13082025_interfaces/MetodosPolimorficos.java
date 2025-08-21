@@ -19,7 +19,7 @@ NO tenemos tostring
 */
 public interface MetodosPolimorficos {
     // constante es una variable que nunca cambia de valor. 
-    public  void generarBoletapago();
+    public  void generarBoletapago1();
        
 
 }
