@@ -4,7 +4,10 @@
  */
 package clase_01092025;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -19,7 +22,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         DefaultListModel model = new DefaultListModel();
         jl_usuarios.setModel(model);
-        
+
     }
 
     /**
@@ -32,6 +35,16 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_abrir = new javax.swing.JDialog();
+        lbl_edicion = new javax.swing.JLabel();
+        txt_texto = new javax.swing.JTextField();
+        btn_actualizar = new javax.swing.JButton();
+        txt_size = new javax.swing.JTextField();
+        btn_actualizarSize = new javax.swing.JButton();
+        txt_font = new javax.swing.JTextField();
+        btn_actualizarFont = new javax.swing.JButton();
+        jcb_styles = new javax.swing.JComboBox<>();
+        btn_changeBgColor = new javax.swing.JButton();
+        btn_changeForeGroundColor = new javax.swing.JButton();
         jpm_opciones = new javax.swing.JPopupMenu();
         jmi_elemento1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -57,15 +70,104 @@ public class Principal extends javax.swing.JFrame {
         jmi_click = new javax.swing.JMenuItem();
         jm_edit = new javax.swing.JMenu();
 
+        btn_actualizar.setText("cambiar");
+        btn_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizarMouseClicked(evt);
+            }
+        });
+
+        btn_actualizarSize.setText("Actualizar");
+        btn_actualizarSize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizarSizeMouseClicked(evt);
+            }
+        });
+
+        btn_actualizarFont.setText("Actualizar");
+        btn_actualizarFont.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizarFontMouseClicked(evt);
+            }
+        });
+
+        jcb_styles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negrita", "Italica", "Normal" }));
+        jcb_styles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_stylesActionPerformed(evt);
+            }
+        });
+
+        btn_changeBgColor.setText("Cambiar BG");
+        btn_changeBgColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_changeBgColorMouseClicked(evt);
+            }
+        });
+
+        btn_changeForeGroundColor.setText("Cambiar Font");
+        btn_changeForeGroundColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_changeForeGroundColorMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_abrirLayout = new javax.swing.GroupLayout(jd_abrir.getContentPane());
         jd_abrir.getContentPane().setLayout(jd_abrirLayout);
         jd_abrirLayout.setHorizontalGroup(
             jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_abrirLayout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(lbl_edicion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_abrirLayout.createSequentialGroup()
+                .addContainerGap(86, Short.MAX_VALUE)
+                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jd_abrirLayout.createSequentialGroup()
+                        .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_abrirLayout.createSequentialGroup()
+                                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_texto)
+                                    .addComponent(txt_size)
+                                    .addComponent(txt_font, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_actualizarSize)
+                                    .addComponent(btn_actualizar)
+                                    .addComponent(btn_actualizarFont, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jcb_styles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46))
+                    .addGroup(jd_abrirLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_changeForeGroundColor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                        .addComponent(btn_changeBgColor)
+                        .addGap(137, 137, 137))))
         );
         jd_abrirLayout.setVerticalGroup(
             jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_abrirLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(lbl_edicion)
+                .addGap(18, 18, 18)
+                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_texto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizar))
+                .addGap(43, 43, 43)
+                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_size, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarSize))
+                .addGap(18, 18, 18)
+                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_font, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarFont))
+                .addGap(35, 35, 35)
+                .addComponent(jcb_styles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jd_abrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_changeBgColor)
+                    .addComponent(btn_changeForeGroundColor))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         jmi_elemento1.setText("Mostrar");
@@ -216,7 +318,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmi_clickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_clickMouseClicked
-         jd_abrir.setVisible(true);
+        jd_abrir.setVisible(true);
         jd_abrir.pack();
     }//GEN-LAST:event_jmi_clickMouseClicked
 
@@ -226,8 +328,8 @@ public class Principal extends javax.swing.JFrame {
             case 1:
                 System.out.println("Click izq");
                 break;
-            case 3: 
-                jpm_opciones.show(this,evt.getX(),evt.getY());
+            case 3:
+                jpm_opciones.show(this, evt.getX(), evt.getY());
             default:
                 System.out.println("Otro tipo de click");
         }
@@ -235,28 +337,28 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void btn_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarMouseClicked
-        DefaultListModel model = (DefaultListModel)jl_usuarios.getModel();
+        DefaultListModel model = (DefaultListModel) jl_usuarios.getModel();
         Usuario u = new Usuario(txt_nombre.getText());
         model.addElement(u);
     }//GEN-LAST:event_btn_agregarMouseClicked
 
     private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
         int pos = jl_usuarios.getSelectedIndex();
-         DefaultListModel model = (DefaultListModel)jl_usuarios.getModel();
+        DefaultListModel model = (DefaultListModel) jl_usuarios.getModel();
         model.remove(pos);
-        
+
     }//GEN-LAST:event_btn_eliminarMouseClicked
 
     private void jl_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_usuariosMouseClicked
         switch (evt.getButton()) {
             case 1:
-         int pos = jl_usuarios.getSelectedIndex();
-         DefaultListModel model = (DefaultListModel)jl_usuarios.getModel();
-         Object objetoSeleccionado = model.getElementAt(pos);
-         if (objetoSeleccionado instanceof Usuario) {
-             Usuario seleccionado = (Usuario)objetoSeleccionado;
-            lbl_selecionado.setText(seleccionado.getNombre());
-        }
+                int pos = jl_usuarios.getSelectedIndex();
+                DefaultListModel model = (DefaultListModel) jl_usuarios.getModel();
+                Object objetoSeleccionado = model.getElementAt(pos);
+                if (objetoSeleccionado instanceof Usuario) {
+                    Usuario seleccionado = (Usuario) objetoSeleccionado;
+                    lbl_selecionado.setText(seleccionado.getNombre());
+                }
                 break;
             case 3:
                 jpm_opciones.show(this.jl_usuarios, evt.getX(), evt.getY());
@@ -268,17 +370,69 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jl_usuariosMouseClicked
 
     private void btn_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editarMouseClicked
-         int pos = jl_usuarios.getSelectedIndex();
-          DefaultListModel model = (DefaultListModel)jl_usuarios.getModel();
-          Object objetoSeleccionado = model.getElementAt(pos);
-         if (objetoSeleccionado instanceof Usuario) {
-             Usuario seleccionado = (Usuario)objetoSeleccionado;
+        int pos = jl_usuarios.getSelectedIndex();
+        DefaultListModel model = (DefaultListModel) jl_usuarios.getModel();
+        Object objetoSeleccionado = model.getElementAt(pos);
+        if (objetoSeleccionado instanceof Usuario) {
+            Usuario seleccionado = (Usuario) objetoSeleccionado;
             String nuevoNombre = txt_nombre.getText();
             seleccionado.setNombre(nuevoNombre);
         }
-         txt_nombre.setText("");
-        
+        txt_nombre.setText("");
+
     }//GEN-LAST:event_btn_editarMouseClicked
+
+    private void btn_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarMouseClicked
+        lbl_edicion.setText(txt_texto.getText());
+        txt_texto.setText("");
+
+    }//GEN-LAST:event_btn_actualizarMouseClicked
+
+    private void btn_changeBgColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_changeBgColorMouseClicked
+        Color colorSeleccionado = JColorChooser.showDialog(this, "Sleccione un color", Color.cyan);
+        lbl_edicion.setOpaque(true);
+        lbl_edicion.setBackground(colorSeleccionado);
+
+    }//GEN-LAST:event_btn_changeBgColorMouseClicked
+
+    private void btn_changeForeGroundColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_changeForeGroundColorMouseClicked
+        Color colorSeleccionado = JColorChooser.showDialog(this, "Sleccione un color", Color.cyan);
+        lbl_edicion.setForeground(colorSeleccionado);
+
+    }//GEN-LAST:event_btn_changeForeGroundColorMouseClicked
+
+    private void btn_actualizarSizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarSizeMouseClicked
+        int size = Integer.parseInt(txt_size.getText());
+        Font fuente = lbl_edicion.getFont();
+        Font nuevafont = new Font(fuente.getFontName(), fuente.getStyle(), size);
+        lbl_edicion.setFont(nuevafont);
+    }//GEN-LAST:event_btn_actualizarSizeMouseClicked
+
+    private void btn_actualizarFontMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarFontMouseClicked
+        String tipo = txt_font.getText();
+        Font fuente = lbl_edicion.getFont();
+        Font nuevafont = new Font(tipo, fuente.getStyle(), fuente.getSize());
+        lbl_edicion.setFont(nuevafont);
+    }//GEN-LAST:event_btn_actualizarFontMouseClicked
+
+    private void jcb_stylesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_stylesActionPerformed
+        int style = jcb_styles.getSelectedIndex();
+        int estilo ;
+        switch (style) {
+            case 0:
+                estilo = Font.BOLD;
+                break;
+            case 1:
+                estilo = Font.ITALIC;
+                break;
+            default:
+                estilo = Font.PLAIN;
+        }
+        
+        Font fuente = lbl_edicion.getFont();
+        Font nuevafont = new Font(fuente.getFontName(), estilo, fuente.getSize());
+        lbl_edicion.setFont(nuevafont);
+    }//GEN-LAST:event_jcb_stylesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +470,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_actualizarFont;
+    private javax.swing.JButton btn_actualizarSize;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_changeBgColor;
+    private javax.swing.JButton btn_changeForeGroundColor;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
@@ -329,6 +488,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JComboBox<String> jcb_styles;
     private javax.swing.JDialog jd_abrir;
     private javax.swing.JList<String> jl_usuarios;
     private javax.swing.JMenu jm_edit;
@@ -337,9 +497,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_click;
     private javax.swing.JMenuItem jmi_elemento1;
     private javax.swing.JPopupMenu jpm_opciones;
+    private javax.swing.JLabel lbl_edicion;
     private javax.swing.JLabel lbl_selecionado;
     private java.awt.MenuItem menuItem1;
     private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JTextField txt_font;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_size;
+    private javax.swing.JTextField txt_texto;
     // End of variables declaration//GEN-END:variables
 }

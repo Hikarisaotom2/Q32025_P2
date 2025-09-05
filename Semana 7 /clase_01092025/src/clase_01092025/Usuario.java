@@ -23,6 +23,10 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public static void hola(){
+    
+}
+    
     @Override
     public String toString() {
         return nombre;
