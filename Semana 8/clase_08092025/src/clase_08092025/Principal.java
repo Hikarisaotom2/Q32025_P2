@@ -30,10 +30,28 @@ public class Principal extends javax.swing.JFrame {
         //Limpiar arbol 
 
     //       
-   DefaultMutableTreeNode raiz  = new DefaultMutableTreeNode();
- DefaultTreeModel modeloArbol = new DefaultTreeModel(raiz);
-//    DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
-  jt_arbolito.setModel(modeloArbol);
+//  DefaultMutableTreeNode raiz  = new DefaultMutableTreeNode("Raiz");
+//  DefaultTreeModel modeloArbol = new DefaultTreeModel(raiz);
+//  jt_arbolito.setModel(modeloArbol);
+  
+  
+  
+     DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
+     DefaultMutableTreeNode raiz  = (DefaultMutableTreeNode)modeloArbol.getRoot();
+     raiz.setUserObject("Usuarios");
+     raiz.removeAllChildren();
+     
+
+     //Agregar elementos al arbol
+     
+     DefaultMutableTreeNode nodoAdministrador = new DefaultMutableTreeNode("Usuarios Admin");
+     DefaultMutableTreeNode nodoNormal = new DefaultMutableTreeNode("Usuarios normales");
+     
+     
+     raiz.add(nodoAdministrador);
+     raiz.add(nodoNormal);
+     
+      modeloArbol.reload();
 }
 
     /**
@@ -58,6 +76,7 @@ public class Principal extends javax.swing.JFrame {
         lbl_valor = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_arbolito = new javax.swing.JTree();
+        jc_tipoUusario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,40 +116,45 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jt_arbolito);
 
+        jc_tipoUusario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Normal" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addComponent(jc_tipoUusario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_cuenta)
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addComponent(btn_agregar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(112, 112, 112)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_columna)
-                                    .addComponent(jLabel2))
-                                .addGap(76, 76, 76)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(lbl_valor)))))
-                    .addComponent(lbl_fila))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_cuenta)
+                                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btn_agregar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(112, 112, 112)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lbl_columna)
+                                            .addComponent(jLabel2))
+                                        .addGap(76, 76, 76)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(lbl_valor)))))
+                            .addComponent(lbl_fila))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,8 +166,12 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jc_tipoUusario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn_agregar))
                 .addGap(39, 39, 39)
@@ -156,7 +184,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lbl_fila)
                     .addComponent(lbl_columna)
                     .addComponent(lbl_valor))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,7 +200,25 @@ public class Principal extends javax.swing.JFrame {
 //        arreglo2[1] = cuenta;
         modelo.addRow(arreglo);
         txt_nombre.setText("");
-        txt_cuenta.setText("");
+        txt_cuenta.setText("");        
+        // Agregar elemento al arbol.
+        
+        DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
+        DefaultMutableTreeNode raiz  = (DefaultMutableTreeNode)modeloArbol.getRoot();
+        
+       
+        if(jc_tipoUusario.getSelectedIndex() == 0){ //admin 
+            DefaultMutableTreeNode nodoAdministrador = (DefaultMutableTreeNode)raiz.getChildAt(0);
+            DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nombre);
+            nodoAdministrador.add(nuevoNodo);
+        }else{ // normal 
+               DefaultMutableTreeNode nodoNormal = (DefaultMutableTreeNode)raiz.getChildAt(1);
+            DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nombre);
+            nodoNormal.add(nuevoNodo);
+        }
+        
+        modeloArbol.reload();
+        
         
     }//GEN-LAST:event_btn_agregarMouseClicked
 
@@ -242,6 +288,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> jc_tipoUusario;
     private javax.swing.JTree jt_arbolito;
     private javax.swing.JTable jt_tablaUsuarios;
     private javax.swing.JLabel lbl_columna;
