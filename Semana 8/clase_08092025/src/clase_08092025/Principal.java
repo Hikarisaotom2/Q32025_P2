@@ -4,6 +4,7 @@
  */
 package clase_08092025;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -77,6 +78,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_arbolito = new javax.swing.JTree();
         jc_tipoUusario = new javax.swing.JComboBox<>();
+        btn_eliminar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_tipoNodo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_elementoArbol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,9 +120,29 @@ public class Principal extends javax.swing.JFrame {
 
         lbl_valor.setText("jLabel6");
 
+        jt_arbolito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_arbolitoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jt_arbolito);
 
         jc_tipoUusario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Normal" }));
+
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Tipo");
+
+        lbl_tipoNodo.setText("jLabel5");
+
+        jLabel6.setText("Elemento");
+
+        lbl_elementoArbol.setText("jLabel7");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,24 +163,35 @@ public class Principal extends javax.swing.JFrame {
                                             .addComponent(txt_cuenta)
                                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(26, 26, 26)
-                                        .addComponent(btn_agregar))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btn_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(112, 112, 112)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbl_columna)
-                                            .addComponent(jLabel2))
-                                        .addGap(76, 76, 76)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(lbl_valor)))))
-                            .addComponent(lbl_fila))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(lbl_columna))
+                                                .addGap(76, 76, 76)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel3)
+                                                    .addComponent(lbl_valor)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lbl_elementoArbol, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addComponent(lbl_fila)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_tipoNodo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(120, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))))
+                        .addGap(58, 58, 58))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +209,11 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(14, 14, 14)
                                 .addComponent(jc_tipoUusario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_eliminar)))
                     .addComponent(btn_agregar))
-                .addGap(39, 39, 39)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -184,7 +223,15 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lbl_fila)
                     .addComponent(lbl_columna)
                     .addComponent(lbl_valor))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_tipoNodo)
+                    .addComponent(lbl_elementoArbol))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,6 +293,44 @@ public class Principal extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jt_tablaUsuariosMouseClicked
 
+    private void jt_arbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolitoMouseClicked
+       DefaultMutableTreeNode nodo =  (DefaultMutableTreeNode)jt_arbolito.getSelectionPath().getLastPathComponent();
+      Object elemento =  nodo.getUserObject();
+      String valor = elemento.toString();
+       System.out.println(nodo);
+       lbl_elementoArbol.setText(valor);
+       
+       Boolean isRoot = nodo.getParent() == null; // RAIZ
+       Boolean isNode = nodo.getChildCount() >0; //NODO 
+       Boolean isLeaf = nodo.getChildCount() ==0; //HOJA 
+       
+       if(isRoot){
+           lbl_tipoNodo.setText("Raiz");
+       }else if(isNode){
+           lbl_tipoNodo.setText("Nodo");
+       }else{
+           lbl_tipoNodo.setText("Hoja");
+       }
+        
+    }//GEN-LAST:event_jt_arbolitoMouseClicked
+
+    private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
+        DefaultMutableTreeNode nodo =  (DefaultMutableTreeNode)jt_arbolito.getSelectionPath().getLastPathComponent();
+        DefaultMutableTreeNode padre = (DefaultMutableTreeNode)nodo.getParent();
+         DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
+        
+        if(nodo.isRoot()){
+            JOptionPane.showMessageDialog(null, "No podemos eliminar el padre");
+        }else{
+            padre.remove(nodo);
+             JOptionPane.showMessageDialog(null, "Eliminado");
+             modeloArbol.reload();
+             
+        }
+        
+       
+    }//GEN-LAST:event_btn_eliminarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -283,16 +368,21 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jc_tipoUusario;
     private javax.swing.JTree jt_arbolito;
     private javax.swing.JTable jt_tablaUsuarios;
     private javax.swing.JLabel lbl_columna;
+    private javax.swing.JLabel lbl_elementoArbol;
     private javax.swing.JLabel lbl_fila;
+    private javax.swing.JLabel lbl_tipoNodo;
     private javax.swing.JLabel lbl_valor;
     private javax.swing.JTextField txt_cuenta;
     private javax.swing.JTextField txt_nombre;
