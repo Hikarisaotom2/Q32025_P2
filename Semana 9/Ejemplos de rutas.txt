@@ -1,0 +1,16 @@
+RUTA: la dirección de un archivo en la memoria 
+
+-> Absoluta 
+La dirección o la serie de paso para llegar al archivo desde el root del sistema operativo 
+ Windows: C://Users/claudiacortes/Desktop/P2/arboles.pptx
+Linux, Mac: /Users/claudiacortes/Desktop/P2/arboles.pptx
+
+disco/usuarios/claudiacortes/desktop/P2/arboles.pptx
+
+
+-> Relativa
+La dirección o la serie de paso para llegar al archivo desde un punto de referencia
+Asumiendo que ya estamos en el escritorio la ruta relativa seria: 
+Desktop/P2/arboles.pptx
+ / : entrar al directorio (carpeta)
+ .. : salir del directorio actual 
