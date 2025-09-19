@@ -1,0 +1,41 @@
+git branch
+muestra el listado de ramas LOCALES
+
+git fetch --all 
+preguntarle a git por las actualizaciones 
+
+git checkout NOMBRE_RAMA
+nos permite cambiarnos a una rama 
+
+git pull origin NOMBRE_RAMA
+trae los cambios que estan en la rama remota 
+
+
+git checkout -b NOMBRE_DE_NUEVA_BRANCH
+crea una nueva rama con ese nombre 
+
+
+MERGE: unir los cambios de dos o mas ramas 
+
+ANTES DE HACER UN MERGE 
+0) verificar que estamos en la rama correcta (la rama en donde queremos unir todos)
+1) si no estamos en la rama correcta, pasarnos a la rama , si no nos quedamos ahi 
+2) verificar que todos los cambios esten en un commit
+3) hacemos un merge 
+
+git merge nombre_de|_la_rama_nuevoscambios 
+
+dos posibles escenarios:
+1) no hay conflictos y git mezcla todo en automatico 
+2) hay conflictos y tenemos que resolverlos
+
+//COMANDOS EXTRA:
+git log
+muestra el historial de commits 
+
+0) hacer fetch 
+1) identificar en que rama estan los cambios que quieren traer 
+2) si no estan en esa rama, moverse a esa rama, si ya estan en la rama no hacemos nada
+3)hacemos pull de los cambios
+
+

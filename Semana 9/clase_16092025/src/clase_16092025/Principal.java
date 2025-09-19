@@ -5,9 +5,13 @@
 package clase_16092025;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 
@@ -68,6 +72,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_cargar.setText("Cargar");
+        btn_cargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cargarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,6 +144,31 @@ public class Principal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btn_guardarMouseClicked
+
+    private void btn_cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarMouseClicked
+        JFileChooser filechooser = new JFileChooser();
+        int estado = filechooser.showOpenDialog(this);
+        
+        if(estado == JFileChooser.APPROVE_OPTION){
+            try{
+               File seleccionado = filechooser.getSelectedFile();
+               FileInputStream fi = new FileInputStream(seleccionado);
+               ObjectInputStream oi = new ObjectInputStream(fi);
+               Object objetoGuardado = oi.readObject();
+               
+                if (objetoGuardado instanceof  DefaultComboBoxModel) {
+                    DefaultComboBoxModel modeloGuardado = (DefaultComboBoxModel)objetoGuardado;
+                    jcb_usuarios.setModel(modeloGuardado);
+                }
+                oi.close();
+            }catch(IOException e){
+                System.out.println(e);
+            } catch (ClassNotFoundException ex) {
+                System.out.println(ex);
+            }
+            
+        }
+    }//GEN-LAST:event_btn_cargarMouseClicked
 
     /**
      * @param args the command line arguments
